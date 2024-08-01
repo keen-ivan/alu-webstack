@@ -33,18 +33,18 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend oreste-frontend-http
+frontend ivan-frontend-http
         bind *:80
         mode http
 	http-request set-header X-Forwarded-Proto http
-        default_backend oreste-backend
+        default_backend ivan-backend
 
-frontend oreste-frontend-https
-	bind *:443 ssl crt /etc/haproxy/certs/www.abizeraoreste.tech.pem
+frontend ivan-frontend-https
+	bind *:443 ssl crt /etc/haproxy/certs/www.keenivan.tech.pem
 	http-request set-header X-Forwarded-Proto https
-	default_backend oreste-backend
+	default_backend ivan-backend
 
-backend oreste-backend
+backend ivan-backend
         balance roundrobin
-        server 6238-web-01 54.196.216.8:80 check
-        server 6238-web-02 98.80.15.59:80 check
+        server 6100-web-01 54.91.148.97:80 check
+        server 6100-web-02 18.213.3.75:80 check
